@@ -1,0 +1,73 @@
+/* Full page styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* Main container */
+.container {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* Title */
+.title {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+/* Button group */
+.button-group {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap : 20px;
+  justify-content: center;
+}
+
+.button{
+  border: 2px solid #8D99AE;
+  border-radius: 1rem;
+}
+
+/* ON button */
+.on_button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.on_button:hover {
+  background-color: #45a049;
+}
+
+/* OFF button */
+.off_button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.off_button:hover {
+  background-color: #da190b;
+}
+
+/* Current display */
+.current {
+  font-size: 24px;
+  color: #555;
+}
