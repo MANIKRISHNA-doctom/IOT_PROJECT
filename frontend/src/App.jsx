@@ -86,12 +86,6 @@ function App() {
           <button className="off_button" onClick={()=>turnOff(3)}>OFF</button>
           <h2 className="current">Current: {current3} A</h2>
       </div>
-      <div className="button">
-          <h3>SOCKET 4 CONTROLS</h3>
-          <button className="on_button" onClick={()=>turnOn(4)}>ON</button>
-          <button className="off_button" onClick={()=>turnOff(4)}>OFF</button>
-          <h2 className="current">Current: {current4} A</h2>
-      </div>
       {error && <p>error,please click again</p>}
     </div>
   </div>
