@@ -59,6 +59,14 @@ function App() {
     clientRef.current.publish(`socket/control${id}`, "OFF");
   };
 
+  const calculateCurrent = (adc) => {
+      const Vref = 5.0;
+      const Vout = (adc * Vref) / 4095;
+      const Voffset = Vout / 2;
+      const current = (Vout - Voffset) / 0.185;
+
+      return current.toFixed(2); // 2 decimal places
+};
   const Card = ({ id, current, gate }) => (
     <div className="card">
       <h3>Socket {id}</h3>
@@ -68,7 +76,7 @@ function App() {
         <button onClick={() => turnOff(id)} className="btn btn-off">OFF</button>
       </div>
 
-      <p className="current">⚡ Current: {current}</p>
+      <p className="current">⚡ Current: {calculateCurrent(current)} A</p>
 
       <p className={`status ${gate === "ON" ? "status-on" : "status-off"}`}>
         {gate}
