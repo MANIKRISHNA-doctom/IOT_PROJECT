@@ -62,41 +62,99 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>IoT Smart Socket</h1>
+  <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+    
+    <h1 className="text-3xl font-bold mb-6 mt-20 text-black-600">
+      IoT Smart Socket
+    </h1>
 
-      <div className="button-group">
+    <div className="flex gap-6 flex-wrap justify-center">
 
-        {/* SOCKET 1 */}
-        <div className="button">
-          <h3>SOCKET 1</h3>
-          <button onClick={()=>turnOn(1)}>ON</button>
-          <button onClick={()=>turnOff(1)}>OFF</button>
-          <p>Current: {current1}</p>
-          <p>Status: {gate1}</p>
+      {/* SOCKET 1 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
+        <h3 className="text-xl font-semibold mb-4">Socket 1</h3>
+
+        <div className="flex justify-center gap-3 mb-4">
+          <button 
+            onClick={()=>turnOn(1)}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+          >
+            ON
+          </button>
+
+          <button 
+            onClick={()=>turnOff(1)}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+          >
+            OFF
+          </button>
         </div>
 
-        {/* SOCKET 2 */}
-        <div className="button">
-          <h3>SOCKET 2</h3>
-          <button onClick={()=>turnOn(2)}>ON</button>
-          <button onClick={()=>turnOff(2)}>OFF</button>
-          <p>Current: {current2}</p>
-          <p>Status: {gate2}</p>
-        </div>
+        <p className="text-gray-700">Current: {current1}</p>
 
-        {/* SOCKET 3 */}
-        <div className="button">
-          <h3>SOCKET 3</h3>
-          <button onClick={()=>turnOn(3)}>ON</button>
-          <button onClick={()=>turnOff(3)}>OFF</button>
-          <p>Current: {current3}</p>
-          <p>Status: {gate3}</p>
-        </div>
-
+        <p className={`mt-2 font-bold ${gate1 === "ON" ? "text-green-600" : "text-red-600"}`}>
+          Status: {gate1}
+        </p>
       </div>
+
+      {/* SOCKET 2 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
+        <h3 className="text-xl font-semibold mb-4">Socket 2</h3>
+
+        <div className="flex justify-center gap-3 mb-4">
+          <button 
+            onClick={()=>turnOn(2)}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+          >
+            ON
+          </button>
+
+          <button 
+            onClick={()=>turnOff(2)}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+          >
+            OFF
+          </button>
+        </div>
+
+        <p className="text-gray-700">Current: {current2}</p>
+
+        <p className={`mt-2 font-bold ${gate2 === "ON" ? "text-green-600" : "text-red-600"}`}>
+          Status: {gate2}
+        </p>
+      </div>
+
+      {/* SOCKET 3 */}
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
+        <h3 className="text-xl font-semibold mb-4">Socket 3</h3>
+
+        <div className="flex justify-center gap-3 mb-4">
+          <button 
+            onClick={()=>turnOn(3)}
+            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+          >
+            ON
+          </button>
+
+          <button 
+            onClick={()=>turnOff(3)}
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+          >
+            OFF
+          </button>
+        </div>
+
+        <p className="text-gray-700">Current: {current3}</p>
+
+        <p className={`mt-2 font-bold ${gate3 === "ON" ? "text-green-600" : "text-red-600"}`}>
+          Status: {gate3}
+        </p>
+      </div>
+
     </div>
-  );
+  </div>
+);
+  
 }
 
 export default App;
