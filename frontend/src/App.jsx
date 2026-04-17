@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import mqtt from "mqtt";
-import './App.css';
+import "./App.css";
 
 function App() {
 
@@ -28,12 +28,10 @@ function App() {
     client.on("connect", () => {
       console.log("Connected");
 
-      // Current topics
       client.subscribe("socket/current1");
       client.subscribe("socket/current2");
       client.subscribe("socket/current3");
 
-      // Status topics
       client.subscribe("socket/status1");
       client.subscribe("socket/status2");
       client.subscribe("socket/status3");
@@ -61,100 +59,36 @@ function App() {
     clientRef.current.publish(`socket/control${id}`, "OFF");
   };
 
+  const Card = ({ id, current, gate }) => (
+    <div className="card">
+      <h3>Socket {id}</h3>
+
+      <div className="btn-group">
+        <button onClick={() => turnOn(id)} className="btn btn-on">ON</button>
+        <button onClick={() => turnOff(id)} className="btn btn-off">OFF</button>
+      </div>
+
+      <p className="current">⚡ Current: {current}</p>
+
+      <p className={`status ${gate === "ON" ? "status-on" : "status-off"}`}>
+        {gate}
+      </p>
+    </div>
+  );
+
   return (
-  <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
-    
-    <h1 className="text-3xl font-bold mb-6 mt-20 text-black-600">
-      IoT Smart Socket
-    </h1>
+    <div className="container">
 
-    <div className="flex gap-6 flex-wrap justify-center">
+      <h1 className="title">⚡ Smart IoT Socket Dashboard</h1>
 
-      {/* SOCKET 1 */}
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
-        <h3 className="text-xl font-semibold mb-4">Socket 1</h3>
-
-        <div className="flex justify-center gap-3 mb-4">
-          <button 
-            onClick={()=>turnOn(1)}
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
-          >
-            ON
-          </button>
-
-          <button 
-            onClick={()=>turnOff(1)}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-          >
-            OFF
-          </button>
-        </div>
-
-        <p className="text-gray-700">Current: {current1}</p>
-
-        <p className={`mt-2 font-bold ${gate1 === "ON" ? "text-green-600" : "text-red-600"}`}>
-          Status: {gate1}
-        </p>
-      </div>
-
-      {/* SOCKET 2 */}
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
-        <h3 className="text-xl font-semibold mb-4">Socket 2</h3>
-
-        <div className="flex justify-center gap-3 mb-4">
-          <button 
-            onClick={()=>turnOn(2)}
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
-          >
-            ON
-          </button>
-
-          <button 
-            onClick={()=>turnOff(2)}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-          >
-            OFF
-          </button>
-        </div>
-
-        <p className="text-gray-700">Current: {current2}</p>
-
-        <p className={`mt-2 font-bold ${gate2 === "ON" ? "text-green-600" : "text-red-600"}`}>
-          Status: {gate2}
-        </p>
-      </div>
-
-      {/* SOCKET 3 */}
-      <div className="bg-white shadow-lg rounded-2xl p-6 w-64 text-center">
-        <h3 className="text-xl font-semibold mb-4">Socket 3</h3>
-
-        <div className="flex justify-center gap-3 mb-4">
-          <button 
-            onClick={()=>turnOn(3)}
-            className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
-          >
-            ON
-          </button>
-
-          <button 
-            onClick={()=>turnOff(3)}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
-          >
-            OFF
-          </button>
-        </div>
-
-        <p className="text-gray-700">Current: {current3}</p>
-
-        <p className={`mt-2 font-bold ${gate3 === "ON" ? "text-green-600" : "text-red-600"}`}>
-          Status: {gate3}
-        </p>
+      <div className="grid">
+        <Card id={1} current={current1} gate={gate1} />
+        <Card id={2} current={current2} gate={gate2} />
+        <Card id={3} current={current3} gate={gate3} />
       </div>
 
     </div>
-  </div>
-);
-  
+  );
 }
 
 export default App;
